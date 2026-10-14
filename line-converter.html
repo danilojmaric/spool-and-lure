@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PE Line Size Converter: PE to mm and kg | Spool & Lure</title>
+<meta name="description" content="Convert PE braid and gou mono or fluoro sizes to millimetres and approximate breaking strength in kg and lb, or find the PE size for any line diameter.">
+<link rel="canonical" href="https://danilojmaric.github.io/spool-and-lure/line-converter">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f6e63">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spool & Lure">
+<meta property="og:title" content="PE line size converter: PE to mm and breaking strength">
+<meta property="og:description" content="Convert PE braid and gou mono or fluoro sizes to millimetres and approximate breaking strength in kg and lb, or find the PE size for any line diameter.">
+<meta property="og:url" content="https://danilojmaric.github.io/spool-and-lure/line-converter">
+<meta property="og:image" content="https://danilojmaric.github.io/spool-and-lure/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PE line size converter: PE to mm and breaking strength">
+<meta name="twitter:description" content="Convert PE braid and gou mono or fluoro sizes to millimetres and approximate breaking strength in kg and lb, or find the PE size for any line diameter.">
+<meta name="twitter:image" content="https://danilojmaric.github.io/spool-and-lure/og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js"></script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "PE Line Size Converter",
+   "url": "https://danilojmaric.github.io/spool-and-lure/line-converter",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Any",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What does PE mean on braided line?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "PE stands for polyethylene, the fibre braid is made from. The number after it is a size on the Japanese line standard, not a breaking strength. PE 1.0 is about 0.165 mm."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why do two PE 1.0 braids have different breaking strengths?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The PE number fixes the thickness, not the strength. Fibre grade, the number of strands (4 or 8) and how each brand tests and rates its line all change the strength."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is a gou number the same as a PE number?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "They share the same diameter scale, so No. 1 nylon or fluoro and PE 1.0 braid are both about 0.165 mm. Mono is much weaker at the same size, roughly 4 lb (1.8 kg) per number."
+     }
+    }
+   ]
+  }
+ ]
+}</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-head">
+    <a class="brand" href="./">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="#fff"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></span>
+      <span class="brand-name">Spool & Lure</span>
+    </a>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch between light and dark theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </header>
+  <nav class="tools-nav" aria-label="Tools"><a href="line-capacity">Line capacity</a><a href="line-converter" aria-current="page">PE converter</a><a href="lure-weight">Lure &amp; rod</a></nav>
+
+  <main>
+<section class="page-head">
+      <h1>PE Line Size Converter</h1>
+      <p class="lead">Turn a PE or gou number into millimetres and an approximate breaking strength, or find the nearest PE size for a diameter.</p>
+    </section>
+
+    <section class="card card-pad">
+      <div class="field" style="gap:8px">
+        <span class="sec-label" style="margin:0">Line type</span>
+        <div class="seg seg-sm" id="typeSeg" role="group" aria-label="Line type">
+          <button type="button" data-value="braid" aria-pressed="true">Braid (PE)</button>
+          <button type="button" data-value="mono" aria-pressed="false">Mono &amp; fluoro (gou)</button>
+        </div>
+      </div>
+      <div class="field" style="gap:8px;margin-top:14px">
+        <span class="sec-label" style="margin:0">Start from</span>
+        <div class="seg seg-sm" id="fromSeg" role="group" aria-label="Start from">
+          <button type="button" data-value="size" aria-pressed="true">Size number</button>
+          <button type="button" data-value="dia" aria-pressed="false">Diameter in mm</button>
+        </div>
+      </div>
+      <div class="grid2" style="margin-top:14px">
+        <div class="field" id="sizeField">
+          <label for="sizeSel" id="sizeLabel">PE size</label>
+          <div class="input-unit"><select id="sizeSel"></select></div>
+        </div>
+        <div class="field" id="diaField" hidden>
+          <label for="diaIn">Line diameter</label>
+          <div class="input-unit"><input id="diaIn" type="text" inputmode="decimal" autocomplete="off" value="0.15"><span class="u">mm</span></div>
+          <span class="hint">Measured, or from the spool label</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="result" id="result" aria-live="polite">
+      <p class="rlabel" id="rLabel">Standard diameter</p>
+      <p class="big"><span id="rValue">-</span><span class="unit" id="rUnit">mm</span></p>
+      <div class="rsub" id="rSub"></div>
+      <div class="result-actions" id="rAction"></div>
+    </div>
+
+    <div class="notice">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
+      <span><strong>Real braid thickness varies by brand.</strong> The PE standard is defined by fibre weight, not measured diameter, so the mm printed on a spool doesn't always match. For capacity maths, the standard diameter is a consistent reference.</span>
+    </div>
+
+    <section class="card card-pad">
+      <p class="sec-label">Size chart</p>
+      <div class="table-scroll">
+        <table class="ref">
+          <thead><tr><th scope="col">PE / No.</th><th scope="col">Diameter</th><th scope="col">Braid 8-strand</th><th scope="col">Braid 4-strand</th><th scope="col">Mono</th></tr></thead>
+          <tbody id="refBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card card-pad prose">
+      <h2>How PE and gou sizes work</h2>
+      <p>Japanese line makers size line by a number called <em>gou</em>. Braid uses the same scale with a PE prefix. The number fixes the diameter: PE 1.0 and No. 1 fluoro are both about 0.165 mm, and diameter grows with the square root of the number.</p>
+      <p class="formula">diameter &asymp; 0.165 mm &times; &radic;PE</p>
+      <p>Strength is a different story. Braid strength at the same PE size depends on strand count and brand: 8-strand braid packs more fibre into the same diameter, so it rates higher than budget 4-strand. Mono follows a simpler rule of about 4 lb (1.8 kg) per number up to No. 5, a little less above that. Fluoro runs slightly weaker than mono. Always trust the rating on your own spool over any chart.</p>
+      <p style="font-size:12.5px">Sources: <a href="https://www.varivas.fishing/japanese-fishing-line-size/" target="_blank" rel="noopener">VARIVAS, Japanese line size standard</a> (diameters) &middot; <a href="https://fishinglineguide.com/blog/pe-line-rating-chart" target="_blank" rel="noopener">Fishing Line Guide, PE rating chart</a> (braid strength) &middot; <a href="https://www.jpfishingtacklenews.com/japanese-line-size/" target="_blank" rel="noopener">Japan Fishing and Tackle News</a> (mono strength).</p>
+    </section>
+
+    <section class="card card-pad">
+      <p class="sec-label">FAQ</p>
+      <details class="faq" open><summary>What does PE mean on braided line?</summary><p>PE stands for polyethylene, the fibre braid is made from. The number after it is a size on the Japanese standard, not a breaking strength. PE 1.0 is about 0.165 mm.</p></details>
+      <details class="faq"><summary>Why do two PE 1.0 braids have different strengths?</summary><p>The PE number fixes thickness, not strength. Fibre grade, 4 or 8 strands, and how each brand tests its line all change the rated strength.</p></details>
+      <details class="faq"><summary>Is a gou number the same as a PE number?</summary><p>They share the diameter scale, so No. 1 fluoro and PE 1.0 braid are both about 0.165 mm. Mono is much weaker at the same size, roughly 4 lb (1.8 kg) per number up to No. 5.</p></details>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <p class="foot-story">Built by one angler during hours spent on dialysis. Free to use, no sign-up.</p>
+    <a class="kofi" href="https://ko-fi.com/danilojmaric" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h13a4 4 0 0 1 0 8h-1v1a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V5zm13 6a2 2 0 0 0 0-4h-1v4h1zM4 20h14v2H4z"/></svg> Leave a tip on Ko-fi</a>
+    <p class="foot-links"><a href="privacy">Privacy</a><span aria-hidden="true">&middot;</span><span>Found a mistake? <span data-mail data-u="danilo.maric.office" data-d="gmail.com">danilo.maric.office [at] gmail.com</span></span></p>
+    <p>&copy; 2026 Spool & Lure. Results are estimates. Your tackle's own ratings always win.</p>
+  </footer>
+</div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var LB = 0.45359237;
+  // Diameters: JAFS standard via VARIVAS. Braid lb ranges: Fishing Line Guide (8-strand typical / 4-strand budget).
+  // Mono lb: Japan Fishing and Tackle News table (about 4 lb per number, less above No. 5).
+  var SIZES = [
+    { n: 0.4, d: 0.104, b8: [4, 6],   b4: [3, 5],   m: 1.6 },
+    { n: 0.6, d: 0.128, b8: [6, 10],  b4: [5, 8],   m: 2.4 },
+    { n: 0.8, d: 0.148, b8: [10, 14], b4: [8, 12],  m: 3.2 },
+    { n: 1.0, d: 0.165, b8: [14, 20], b4: [10, 15], m: 4 },
+    { n: 1.2, d: 0.185, b8: [16, 23], b4: [12, 18], m: 4.8 },
+    { n: 1.5, d: 0.205, b8: [20, 28], b4: [14, 22], m: 6 },
+    { n: 2.0, d: 0.235, b8: [25, 35], b4: [18, 28], m: 8 },
+    { n: 2.5, d: 0.260, b8: [30, 42], b4: [22, 33], m: 10 },
+    { n: 3.0, d: 0.285, b8: [35, 50], b4: [28, 40], m: 12 },
+    { n: 4.0, d: 0.330, b8: [45, 65], b4: [35, 55], m: 16 },
+    { n: 5.0, d: 0.370, b8: [55, 80], b4: [45, 70], m: 20 },
+    { n: 6.0, d: 0.405, b8: [65, 90], b4: [55, 80], m: 22 },
+    { n: 8.0, d: 0.470, b8: [80, 120], b4: [65, 100], m: 28 }
+  ];
+  var DEFAULT = 3; // PE 1.0
+  var type = 'braid', from = 'size', current = DEFAULT;
+
+  function sizeName(n) { var s = n.toFixed(1); return type === 'braid' ? 'PE ' + s : 'No. ' + s; }
+  function kg(lb) { return lb * LB; }
+  function kgRange(r) { return AT.trim(kg(r[0]), 1) + '-' + AT.trim(kg(r[1]), 1) + ' kg'; }
+  function lbRange(r) { return r[0] + '-' + r[1] + ' lb'; }
+  function monoText(s) { return '~' + AT.trim(kg(s.m), 1) + ' kg'; }
+
+  function fillSelect() {
+    var sel = $('sizeSel');
+    sel.innerHTML = SIZES.map(function (s, i) { return '<option value="' + i + '">' + sizeName(s.n) + '</option>'; }).join('');
+    sel.value = String(current);
+    $('sizeLabel').textContent = type === 'braid' ? 'PE size' : 'Gou (No.) size';
+  }
+
+  function fillTable() {
+    $('refBody').innerHTML = SIZES.map(function (s, i) {
+      return '<tr data-i="' + i + '"' + (i === current ? ' class="is-current"' : '') + '>' +
+        '<td><button type="button" class="row-btn" data-i="' + i + '" aria-label="Show ' + s.n.toFixed(1) + '">' + s.n.toFixed(1) + '</button></td>' +
+        '<td class="mono">' + s.d.toFixed(3) + ' mm</td>' +
+        '<td>' + kgRange(s.b8) + '</td>' +
+        '<td>' + kgRange(s.b4) + '</td>' +
+        '<td>' + monoText(s) + '</td></tr>';
+    }).join('');
+  }
+  function markRow() {
+    Array.prototype.forEach.call($('refBody').rows, function (r) { r.classList.toggle('is-current', +r.getAttribute('data-i') === current); });
+  }
+
+  function strengthChips(s) {
+    if (type === 'braid') return '<span class="chip">8-strand ' + kgRange(s.b8) + ' (' + lbRange(s.b8) + ')</span><span class="chip">4-strand ' + kgRange(s.b4) + ' (' + lbRange(s.b4) + ')</span>';
+    return '<span class="chip">Mono ' + monoText(s) + ' (~' + s.m + ' lb)</span><span class="chip">Fluoro slightly less</span>';
+  }
+
+  function actionLink(dia, label) {
+    $('rAction').innerHTML = '<a href="line-capacity?main=' + dia + '" id="useDia">Use ' + dia + ' mm in the capacity calculator &rarr;</a>';
+    $('useDia').addEventListener('click', function () { AT.handoffSet({ dia: dia, label: label }); });
+  }
+
+  function nearestIndex(d) {
+    var best = 0, bestDiff = Infinity;
+    SIZES.forEach(function (s, i) { var diff = Math.abs(s.d - d); if (diff < bestDiff) { bestDiff = diff; best = i; } });
+    return best;
+  }
+
+  function calc() {
+    var res = $('result');
+    res.classList.remove('warn');
+    if (from === 'size') {
+      var s = SIZES[current];
+      $('rLabel').textContent = sizeName(s.n) + ' standard diameter';
+      $('rValue').textContent = s.d.toFixed(3);
+      $('rUnit').textContent = 'mm';
+      $('rSub').innerHTML = strengthChips(s);
+      actionLink(s.d, sizeName(s.n));
+      markRow();
+      return;
+    }
+    var d = AT.field('diaIn', { gt: 0, max: 2 });
+    if (!(d > 0)) {
+      $('rLabel').textContent = 'Nearest standard size';
+      $('rValue').textContent = '-'; $('rUnit').textContent = '';
+      $('rSub').innerHTML = '<span class="muted">Enter a diameter such as 0.15 or 0,15.</span>';
+      $('rAction').innerHTML = '';
+      return;
+    }
+    var exact = Math.pow(d / 0.165, 2);
+    var lo = SIZES[0].d * 0.85, hi = SIZES[SIZES.length - 1].d * 1.15;
+    if (d < lo || d > hi) {
+      res.classList.add('warn');
+      $('rLabel').textContent = 'Outside the chart';
+      $('rValue').textContent = (type === 'braid' ? 'PE ' : 'No. ') + AT.trim(exact, 2); $('rUnit').textContent = '';
+      $('rSub').innerHTML = '<span class="muted">The chart covers ' + SIZES[0].d.toFixed(3) + ' to ' + SIZES[SIZES.length - 1].d.toFixed(3) + ' mm. This is a formula estimate only.</span>';
+      $('rAction').innerHTML = '';
+      current = -1; markRow();
+      return;
+    }
+    current = nearestIndex(d);
+    var s2 = SIZES[current];
+    var nm = sizeName(s2.n);
+    $('rLabel').textContent = 'Nearest standard size';
+    $('rValue').textContent = nm; $('rUnit').textContent = '';
+    $('rSub').innerHTML = '<span class="chip">' + AT.trim(d, 3) + ' mm &asymp; ' + (type === 'braid' ? 'PE ' : 'No. ') + AT.trim(exact, 2) + '</span>' +
+      '<span class="chip">standard ' + s2.d.toFixed(3) + ' mm</span>' + strengthChips(s2);
+    actionLink(d, nm);
+    $('sizeSel').value = String(current);
+    markRow();
+  }
+
+  AT.seg($('typeSeg'), function (v) {
+    type = v;
+    var keep = current < 0 ? DEFAULT : current;
+    current = keep; fillSelect(); calc();
+  });
+  AT.seg($('fromSeg'), function (v) {
+    from = v;
+    $('sizeField').hidden = v !== 'size';
+    $('diaField').hidden = v !== 'dia';
+    if (v === 'size' && current < 0) current = DEFAULT;
+    $('sizeSel').value = String(current);
+    calc();
+  });
+  $('sizeSel').addEventListener('change', function () { current = +this.value; calc(); });
+  $('diaIn').addEventListener('input', calc);
+  $('refBody').addEventListener('click', function (e) {
+    var b = e.target.closest('.row-btn');
+    if (!b) return;
+    current = +b.getAttribute('data-i');
+    from = 'size';
+    $('fromSeg').querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-value') === 'size' ? 'true' : 'false'); });
+    $('sizeField').hidden = false; $('diaField').hidden = true;
+    $('sizeSel').value = String(current);
+    calc();
+    $('result').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  fillSelect(); fillTable(); calc();
+})();
+</script>
+</body>
+</html>

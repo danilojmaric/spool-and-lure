@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lure Weight &amp; Rod Casting Weight Checker | Spool & Lure</title>
+<meta name="description" content="Enter your rod's casting weight in grams and check which lures fit it, where the sweet spot is, and which lures are too light or risk the blank.">
+<link rel="canonical" href="https://danilojmaric.github.io/spool-and-lure/lure-weight">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f6e63">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spool & Lure">
+<meta property="og:title" content="Lure weight &amp; rod casting weight checker">
+<meta property="og:description" content="Enter your rod's casting weight in grams and check which lures fit it, where the sweet spot is, and which lures are too light or risk the blank.">
+<meta property="og:url" content="https://danilojmaric.github.io/spool-and-lure/lure-weight">
+<meta property="og:image" content="https://danilojmaric.github.io/spool-and-lure/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lure weight &amp; rod casting weight checker">
+<meta name="twitter:description" content="Enter your rod's casting weight in grams and check which lures fit it, where the sweet spot is, and which lures are too light or risk the blank.">
+<meta name="twitter:image" content="https://danilojmaric.github.io/spool-and-lure/og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js"></script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Lure Weight & Rod Match",
+   "url": "https://danilojmaric.github.io/spool-and-lure/lure-weight",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Any",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What does casting weight on a rod mean?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It is the lure weight range the blank is designed to cast, for example 5-21 g. Below it the rod will not bend enough to load; above it you risk breaking the blank."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I cast a lure heavier than the rod's maximum?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A slightly heavy lure on a gentle lob usually survives, but a hard cast can break the blank, and many makers do not cover that under warranty."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "My rod is rated in ounces. How do I convert?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "1 oz is 28.35 g. A 1/8-1/2 oz rod is about 3.5-14 g."
+     }
+    }
+   ]
+  }
+ ]
+}</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-head">
+    <a class="brand" href="./">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="#fff"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></span>
+      <span class="brand-name">Spool & Lure</span>
+    </a>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch between light and dark theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </header>
+  <nav class="tools-nav" aria-label="Tools"><a href="line-capacity">Line capacity</a><a href="line-converter">PE converter</a><a href="lure-weight" aria-current="page">Lure &amp; rod</a></nav>
+
+  <main>
+<section class="page-head">
+      <h1>Lure Weight &amp; Rod Match</h1>
+      <p class="lead">Enter your rod's casting weight and the lures you carry. See which ones cast well, which are too light, and which put the blank at risk.</p>
+    </section>
+
+    <section class="card card-pad">
+      <p class="sec-label">Rod casting weight</p>
+      <div class="grid2">
+        <div class="field">
+          <label for="cwMin">Minimum</label>
+          <div class="input-unit"><input id="cwMin" type="text" inputmode="decimal" autocomplete="off" value="5"><span class="u">g</span></div>
+        </div>
+        <div class="field">
+          <label for="cwMax">Maximum</label>
+          <div class="input-unit"><input id="cwMax" type="text" inputmode="decimal" autocomplete="off" value="21"><span class="u">g</span></div>
+        </div>
+      </div>
+      <p class="hint" style="font-size:12px;color:var(--ink-faint);margin:12px 0 8px">Printed on the blank above the handle. No label? Pick a typical class:</p>
+      <div class="preset-row" id="presets">
+        <button type="button" class="preset" data-min="1" data-max="7"><b>UL</b>1-7 g</button>
+        <button type="button" class="preset" data-min="3" data-max="15"><b>L</b>3-15 g</button>
+        <button type="button" class="preset" data-min="5" data-max="21"><b>ML</b>5-21 g</button>
+        <button type="button" class="preset" data-min="10" data-max="30"><b>M</b>10-30 g</button>
+        <button type="button" class="preset" data-min="15" data-max="45"><b>MH</b>15-45 g</button>
+        <button type="button" class="preset" data-min="30" data-max="80"><b>H</b>30-80 g</button>
+      </div>
+    </section>
+
+    <div class="result" id="result" aria-live="polite">
+      <p class="rlabel" id="rLabel">Sweet spot for this rod</p>
+      <p class="big"><span id="rValue">-</span><span class="unit" id="rUnit">g</span></p>
+      <div class="rsub" id="rSub"></div>
+    </div>
+
+    <section class="card card-pad">
+      <p class="sec-label">Your lures</p>
+      <div class="gauge" id="gauge" aria-hidden="true"></div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:var(--none-soft)"></i>Too light</span>
+        <span><i style="background:var(--caution-soft)"></i>Light / heavy end</span>
+        <span><i style="background:var(--ok-soft)"></i>Sweet spot</span>
+        <span><i style="background:var(--bad-soft)"></i>Over max</span>
+      </div>
+      <form class="add-row" id="addForm" style="margin-top:16px" novalidate>
+        <div class="input-unit"><input id="lureIn" type="text" inputmode="decimal" autocomplete="off" placeholder="Add a lure, e.g. 7" aria-label="Lure weight in grams"><span class="u">g</span></div>
+        <button class="btn" type="submit">Add</button>
+      </form>
+      <p class="hint" id="addMsg" style="font-size:12px;color:var(--bad);margin:6px 0 0" hidden></p>
+      <ul class="lure-list" id="lureList" style="margin-top:12px"></ul>
+    </section>
+
+    <section class="card card-pad prose">
+      <h2>How the zones work</h2>
+      <p>A rod's casting weight is the range its blank is built to load. Lures in the middle half of that range bend the rod properly and give the longest, most accurate casts. Near the ends it still works, with some trade-off. Below the minimum the rod barely flexes, and above the maximum a hard cast can break it.</p>
+      <p class="formula">sweet spot = middle 50% of the range</p>
+      <p>This is a rule of thumb. Fast-action rods often feel best in the upper half, softer ones lower down. Weigh your lures if the packet only gives size.</p>
+    </section>
+
+    <section class="card card-pad">
+      <p class="sec-label">FAQ</p>
+      <details class="faq" open><summary>What does casting weight on a rod mean?</summary><p>It's the lure weight range the blank is designed to cast, for example 5-21 g. Below it the rod won't bend enough to load. Above it you risk breaking the blank.</p></details>
+      <details class="faq"><summary>Can I cast a lure heavier than the maximum?</summary><p>A slightly heavy lure on a gentle lob usually survives, but a hard cast can snap the blank, and many makers won't cover that under warranty.</p></details>
+      <details class="faq"><summary>My rod is rated in ounces. How do I convert?</summary><p>1 oz is 28.35 g. A 1/8-1/2 oz rod is about 3.5-14 g.</p></details>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <p class="foot-story">Built by one angler during hours spent on dialysis. Free to use, no sign-up.</p>
+    <a class="kofi" href="https://ko-fi.com/danilojmaric" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h13a4 4 0 0 1 0 8h-1v1a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V5zm13 6a2 2 0 0 0 0-4h-1v4h1zM4 20h14v2H4z"/></svg> Leave a tip on Ko-fi</a>
+    <p class="foot-links"><a href="privacy">Privacy</a><span aria-hidden="true">&middot;</span><span>Found a mistake? <span data-mail data-u="danilo.maric.office" data-d="gmail.com">danilo.maric.office [at] gmail.com</span></span></p>
+    <p>&copy; 2026 Spool & Lure. Results are estimates. Your tackle's own ratings always win.</p>
+  </footer>
+</div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var lures = [3.5, 7, 12, 18, 25];
+  var MAX_LURES = 12;
+  var ZONES = {
+    light:   { cls: 'none',    label: 'Too light',  note: 'Rod won’t load. Expect short, wobbly casts.' },
+    low:     { cls: 'caution', label: 'Light end',  note: 'Casts fine, a little short on distance.' },
+    sweet:   { cls: 'ok',      label: 'Sweet spot', note: 'Rod loads well. Best distance and feel.' },
+    high:    { cls: 'caution', label: 'Heavy end',  note: 'Within rating. Smooth casts, no snap casting.' },
+    over:    { cls: 'bad',     label: 'Over max',   note: 'A hard cast can break the blank.' }
+  };
+
+  function classify(w, min, max) {
+    var span = max - min, q1 = min + span * 0.25, q3 = min + span * 0.75;
+    if (w < min) return 'light';
+    if (w < q1) return 'low';
+    if (w <= q3) return 'sweet';
+    if (w <= max) return 'high';
+    return 'over';
+  }
+
+  function syncPresets(min, max) {
+    Array.prototype.forEach.call($('presets').children, function (b) {
+      b.setAttribute('aria-pressed', (+b.dataset.min === min && +b.dataset.max === max) ? 'true' : 'false');
+    });
+  }
+
+  function drawGauge(min, max) {
+    var g = $('gauge');
+    var top = Math.max(max * 1.25, lures.length ? Math.max.apply(null, lures) * 1.08 : 0);
+    var pct = function (v) { return Math.max(0, Math.min(100, v / top * 100)); };
+    var span = max - min, q1 = min + span * 0.25, q3 = min + span * 0.75;
+    var zone = function (a, b, cls) { return '<div class="gauge-zone ' + cls + '" style="left:' + pct(a) + '%;width:' + (pct(b) - pct(a)) + '%"></div>'; };
+    var html = '<div class="gauge-track">' + zone(min, q1, 'caution') + zone(q1, q3, 'ok') + zone(q3, max, 'caution') + zone(max, top, 'bad') + '</div>';
+    html += '<span class="gauge-tick" style="left:' + pct(min) + '%">' + AT.trim(min, 1) + ' g</span>';
+    html += '<span class="gauge-tick" style="left:' + pct(max) + '%">' + AT.trim(max, 1) + ' g</span>';
+    lures.forEach(function (w, i) {
+      var z = ZONES[classify(w, min, max)];
+      html += '<span class="gauge-marker ' + z.cls + '" style="left:' + pct(w) + '%"></span>';
+      html += '<span class="gauge-label r' + (i % 2) + '" style="left:' + pct(w) + '%">' + AT.trim(w, 1) + '</span>';
+    });
+    g.innerHTML = html;
+  }
+
+  function drawList(min, max) {
+    var ok = isFinite(min) && isFinite(max);
+    $('lureList').innerHTML = lures.map(function (w, i) {
+      var z = ok ? ZONES[classify(w, min, max)] : null;
+      return '<li><span class="lure-w">' + AT.trim(w, 1) + ' g</span>' +
+        (z ? '<span class="pill ' + z.cls + '">' + z.label + '</span><span class="lure-note">' + z.note + '</span>' : '<span></span><span></span>') +
+        '<button type="button" class="rm" data-i="' + i + '" aria-label="Remove ' + AT.trim(w, 1) + ' g lure">&times;</button></li>';
+    }).join('') || '<li style="grid-template-columns:1fr"><span class="lure-note">No lures yet. Add the weights you carry.</span></li>';
+  }
+
+  function calc() {
+    var min = AT.field('cwMin', { gt: 0, max: 500 });
+    var max = AT.field('cwMax', { gt: 0, max: 500 });
+    var res = $('result');
+    res.classList.remove('warn');
+    syncPresets(min, max);
+    if (min > 0 && max > 0 && min >= max) {
+      document.getElementById('cwMin').closest('.input-unit').classList.add('is-invalid');
+      document.getElementById('cwMax').closest('.input-unit').classList.add('is-invalid');
+      res.classList.add('warn');
+      $('rLabel').textContent = 'Check the range';
+      $('rValue').textContent = '-';
+      $('rSub').innerHTML = '<span class="muted">The minimum must be lower than the maximum.</span>';
+      $('gauge').innerHTML = ''; drawList(NaN, NaN);
+      return;
+    }
+    if (!(min > 0 && max > 0)) {
+      $('rLabel').textContent = 'Sweet spot for this rod';
+      $('rValue').textContent = '-';
+      $('rSub').innerHTML = '<span class="muted">Enter the rod’s casting weight, or pick a class.</span>';
+      $('gauge').innerHTML = ''; drawList(NaN, NaN);
+      return;
+    }
+    var span = max - min;
+    $('rLabel').textContent = 'Sweet spot for this rod';
+    $('rValue').textContent = AT.trim(min + span * 0.25, 1) + '-' + AT.trim(min + span * 0.75, 1);
+    var within = lures.filter(function (w) { return w >= min && w <= max; }).length;
+    var over = lures.filter(function (w) { return w > max; }).length;
+    var chips = '<span class="chip">' + within + ' of ' + lures.length + ' lures within rating</span>';
+    if (over) chips += '<span class="chip">' + over + ' over max</span>';
+    $('rSub').innerHTML = chips;
+    drawGauge(min, max);
+    drawList(min, max);
+  }
+
+  function addLure(e) {
+    e.preventDefault();
+    var input = $('lureIn');
+    var msg = $('addMsg');
+    var v = AT.field('lureIn', { gt: 0, max: 500 });
+    msg.hidden = true;
+    if (!(v > 0)) {
+      if (input.value.trim() !== '') { msg.textContent = 'Enter a weight in grams, e.g. 7 or 3,5.'; msg.hidden = false; }
+      return;
+    }
+    v = Math.round(v * 10) / 10;
+    if (lures.indexOf(v) !== -1) { msg.textContent = v + ' g is already in the list.'; msg.hidden = false; return; }
+    if (lures.length >= MAX_LURES) { msg.textContent = 'That’s ' + MAX_LURES + ' lures. Remove one to add another.'; msg.hidden = false; return; }
+    lures.push(v);
+    lures.sort(function (a, b) { return a - b; });
+    input.value = '';
+    input.closest('.input-unit').classList.remove('is-invalid');
+    calc();
+    input.focus();
+  }
+
+  $('addForm').addEventListener('submit', addLure);
+  $('lureIn').addEventListener('input', function () { $('addMsg').hidden = true; this.closest('.input-unit').classList.remove('is-invalid'); });
+  $('lureList').addEventListener('click', function (e) {
+    var b = e.target.closest('.rm'); if (!b) return;
+    lures.splice(+b.getAttribute('data-i'), 1);
+    calc();
+  });
+  $('presets').addEventListener('click', function (e) {
+    var b = e.target.closest('.preset'); if (!b) return;
+    $('cwMin').value = b.dataset.min; $('cwMax').value = b.dataset.max;
+    calc();
+  });
+  ['cwMin', 'cwMax'].forEach(function (id) { $(id).addEventListener('input', calc); });
+  calc();
+})();
+</script>
+</body>
+</html>

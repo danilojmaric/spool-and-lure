@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reel Line Capacity &amp; Backing Calculator | Spool & Lure</title>
+<meta name="description" content="Free metric reel line capacity and backing calculator. See how much braid, mono or fluoro fits your spool and how much backing to add. In mm and metres.">
+<link rel="canonical" href="https://danilojmaric.github.io/spool-and-lure/line-capacity">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f6e63">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spool & Lure">
+<meta property="og:title" content="Reel line capacity &amp; backing calculator (metric)">
+<meta property="og:description" content="Free metric reel line capacity and backing calculator. See how much braid, mono or fluoro fits your spool and how much backing to add. In mm and metres.">
+<meta property="og:url" content="https://danilojmaric.github.io/spool-and-lure/line-capacity">
+<meta property="og:image" content="https://danilojmaric.github.io/spool-and-lure/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reel line capacity &amp; backing calculator (metric)">
+<meta name="twitter:description" content="Free metric reel line capacity and backing calculator. See how much braid, mono or fluoro fits your spool and how much backing to add. In mm and metres.">
+<meta name="twitter:image" content="https://danilojmaric.github.io/spool-and-lure/og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js"></script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Reel Line Capacity & Backing Calculator",
+   "url": "https://danilojmaric.github.io/spool-and-lure/line-capacity",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Any",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Where do I find my reel's rated capacity?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It is printed on the spool or in the manual as a diameter and length pair, for example 0.25 mm / 150 m. Enter that pair as your reel's rating."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why put backing under braid?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Backing is cheap mono that fills the bottom of the spool so you do not pay for braid you will never cast. It also stops braid slipping on a bare spool."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does it work for braid, mono and fluorocarbon?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. The calculation uses only diameter, so any line type works. For braid, the standard PE diameter is usually more realistic than the diameter printed on the spool."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How accurate is the result?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Expect it to be within a few metres. Winding tension, spool shape and how evenly the line lays all change real capacity, so spool a little less and check the fill by eye."
+     }
+    }
+   ]
+  }
+ ]
+}</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-head">
+    <a class="brand" href="./">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="#fff"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></span>
+      <span class="brand-name">Spool & Lure</span>
+    </a>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch between light and dark theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </header>
+  <nav class="tools-nav" aria-label="Tools"><a href="line-capacity" aria-current="page">Line capacity</a><a href="line-converter">PE converter</a><a href="lure-weight">Lure &amp; rod</a></nav>
+
+  <main>
+<section class="page-head">
+      <h1>Reel Line Capacity &amp; Backing Calculator</h1>
+      <p class="lead">See how much braid, mono or fluoro fits your spool, and how much backing to lay down first. Everything in millimetres and metres.</p>
+    </section>
+
+    <div class="notice" id="handoffNote" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      <span id="handoffText"></span>
+    </div>
+
+    <section class="card card-pad">
+      <p class="sec-label">Your reel's rated capacity</p>
+      <div class="grid2">
+        <div class="field">
+          <label for="ratedDia">Rated line diameter</label>
+          <div class="input-unit"><input id="ratedDia" type="text" inputmode="decimal" autocomplete="off" value="0.25"><span class="u">mm</span></div>
+          <span class="hint">Printed on the spool, e.g. 0.25</span>
+        </div>
+        <div class="field">
+          <label for="ratedLen">Rated length</label>
+          <div class="input-unit"><input id="ratedLen" type="text" inputmode="decimal" autocomplete="off" value="150"><span class="u">m</span></div>
+          <span class="hint">The length paired with it, e.g. 150</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="seg" id="modeSeg" role="group" aria-label="Calculation mode">
+      <button type="button" data-value="backing" aria-pressed="true">Backing + main line</button>
+      <button type="button" data-value="capacity" aria-pressed="false">Full spool capacity</button>
+    </div>
+
+    <section class="card card-pad" id="backingInputs">
+      <p class="sec-label">What you want to spool</p>
+      <div class="grid2">
+        <div class="field">
+          <label for="mainDia">Main line diameter</label>
+          <div class="input-unit"><input id="mainDia" type="text" inputmode="decimal" autocomplete="off" value="0.13"><span class="u">mm</span></div>
+          <span class="hint">Only know the PE size? <a href="line-converter">Convert it</a></span>
+        </div>
+        <div class="field">
+          <label for="mainLen">Main line to load</label>
+          <div class="input-unit"><input id="mainLen" type="text" inputmode="decimal" autocomplete="off" value="120"><span class="u">m</span></div>
+          <span class="hint">What you'll actually fish</span>
+        </div>
+        <div class="field">
+          <label for="backDia">Backing diameter</label>
+          <div class="input-unit"><input id="backDia" type="text" inputmode="decimal" autocomplete="off" value="0.25"><span class="u">mm</span></div>
+          <span class="hint">Cheap mono underneath</span>
+        </div>
+        <div class="field">
+          <label for="fill1">Target spool fill</label>
+          <div class="input-unit"><input id="fill1" type="text" inputmode="decimal" autocomplete="off" value="95"><span class="u">%</span></div>
+          <span class="hint">90-95% helps avoid wind knots</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card card-pad" id="capacityInputs" hidden>
+      <p class="sec-label">Line you want to check</p>
+      <div class="grid2">
+        <div class="field">
+          <label for="newDia">Line diameter</label>
+          <div class="input-unit"><input id="newDia" type="text" inputmode="decimal" autocomplete="off" value="0.13"><span class="u">mm</span></div>
+          <span class="hint">Only know the PE size? <a href="line-converter">Convert it</a></span>
+        </div>
+        <div class="field">
+          <label for="fill2">Target spool fill</label>
+          <div class="input-unit"><input id="fill2" type="text" inputmode="decimal" autocomplete="off" value="100"><span class="u">%</span></div>
+          <span class="hint">100% means full to the lip</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="result" id="result" aria-live="polite">
+      <p class="rlabel" id="rLabel">Backing needed</p>
+      <p class="big"><span id="rValue">-</span><span class="unit" id="rUnit">m</span></p>
+      <div class="rsub" id="rSub"></div>
+    </div>
+
+    <section class="card card-pad prose">
+      <h2>How it works</h2>
+      <p>How much line fits on a spool depends on the line's <strong>diameter</strong>, not its breaking strain. Halve the diameter and about four times as much line fits. Reel makers use the same volume rule when they print capacity on the spool:</p>
+      <p class="formula">length &times; diameter&sup2; = spool volume (constant)</p>
+      <p>The calculator takes that volume from your reel's rating, sets aside room for the main line you want, and fills the rest with backing. Lengths are rounded to whole metres, because spooling is never more precise than that.</p>
+    </section>
+
+    <section class="card card-pad">
+      <p class="sec-label">FAQ</p>
+      <details class="faq" open><summary>Where do I find my reel's rated capacity?</summary><p>It's printed on the spool or in the manual as a diameter and length pair, for example 0.25 mm / 150 m. Enter that pair as your reel's rating. If your reel only lists pound test and yards, <a href="line-converter">convert the line size first</a>.</p></details>
+      <details class="faq"><summary>Why put backing under braid?</summary><p>Backing is cheap mono that fills the bottom of the spool, so you don't pay for braid you'll never cast. It also stops braid slipping on a bare spool and gives the braid a firm bed to lay on.</p></details>
+      <details class="faq"><summary>Does it work for braid, mono and fluorocarbon?</summary><p>Yes. The maths uses only diameter, so any line works. For braid, the standard PE diameter is usually closer to reality than the diameter printed on the spool.</p></details>
+      <details class="faq"><summary>How accurate is the result?</summary><p>Expect it to be within a few metres. Winding tension, spool shape and how evenly the line lays all change real capacity, so spool a little less than the result and check the fill by eye.</p></details>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <p class="foot-story">Built by one angler during hours spent on dialysis. Free to use, no sign-up.</p>
+    <a class="kofi" href="https://ko-fi.com/danilojmaric" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h13a4 4 0 0 1 0 8h-1v1a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V5zm13 6a2 2 0 0 0 0-4h-1v4h1zM4 20h14v2H4z"/></svg> Leave a tip on Ko-fi</a>
+    <p class="foot-links"><a href="privacy">Privacy</a><span aria-hidden="true">&middot;</span><span>Found a mistake? <span data-mail data-u="danilo.maric.office" data-d="gmail.com">danilo.maric.office [at] gmail.com</span></span></p>
+    <p>&copy; 2026 Spool & Lure. Results are estimates. Your tackle's own ratings always win.</p>
+  </footer>
+</div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var mode = 'backing';
+  var OK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+  var WARN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>';
+
+  AT.seg($('modeSeg'), function (v) {
+    mode = v;
+    $('backingInputs').hidden = v !== 'backing';
+    $('capacityInputs').hidden = v !== 'capacity';
+    calc();
+  });
+
+  function show(v, label, warn) {
+    $('rValue').textContent = v;
+    $('rLabel').textContent = label;
+    $('result').classList.toggle('warn', !!warn);
+  }
+  function sub(html) { $('rSub').innerHTML = html; }
+  function prompt(label, text) { show('-', label); sub('<span class="muted">' + text + '</span>'); }
+
+  function calc() {
+    var rd = AT.field('ratedDia', { gt: 0, max: 3 });
+    var rl = AT.field('ratedLen', { gt: 0, max: 5000 });
+    var reelOk = rd > 0 && rl > 0;
+    var K = rd * rd * rl; // spool volume constant (mm^2 * m)
+
+    if (mode === 'capacity') {
+      var nd = AT.field('newDia', { gt: 0, max: 3 });
+      var f2 = AT.field('fill2', { gt: 0, max: 100 });
+      if (!reelOk) return prompt('Total line that fits', 'Enter your reel’s rated diameter and length.');
+      if (!(nd > 0)) return prompt('Total line that fits', 'Enter the diameter of the line you want to check.');
+      if (!(f2 > 0)) return prompt('Total line that fits', 'Enter a spool fill between 1 and 100%.');
+      var cap = K * (f2 / 100) / (nd * nd);
+      show(AT.fmt(cap, 0), 'Total line that fits');
+      sub('<span class="chip">' + AT.trim(nd, 3) + ' mm line</span><span class="chip">' + AT.trim(f2, 0) + '% fill</span>');
+      return;
+    }
+
+    var md = AT.field('mainDia', { gt: 0, max: 3 });
+    var ml = AT.field('mainLen', { min: 0, max: 5000 });
+    var bd = AT.field('backDia', { gt: 0, max: 3 });
+    var f1 = AT.field('fill1', { gt: 0, max: 100 });
+    if (!reelOk) return prompt('Backing needed', 'Enter your reel’s rated diameter and length.');
+    if (!(md > 0) || !(ml >= 0) || !(bd > 0)) return prompt('Backing needed', 'Fill in the main line and backing details.');
+    if (!(f1 > 0)) return prompt('Backing needed', 'Enter a spool fill between 1 and 100%.');
+
+    var avail = K * (f1 / 100);
+    var backVol = avail - ml * md * md;
+
+    if (backVol < 0) {
+      var maxMain = avail / (md * md);
+      show('0', 'Main line won’t fit', true);
+      sub('<div class="warnmsg">' + WARN_SVG + '<span>At ' + AT.trim(f1, 0) + '% fill this spool holds about <strong>' + AT.fmt(Math.floor(maxMain), 0) + ' m</strong> of ' + AT.trim(md, 3) + ' mm line. Load less, or pick a thinner line.</span></div>');
+      return;
+    }
+    var backLen = backVol / (bd * bd);
+    show(AT.fmt(backLen, 0), 'Backing needed');
+    sub('<span class="chip">' + OK_SVG + AT.fmt(ml, 0) + ' m main line fits</span><span class="chip">' + AT.trim(f1, 0) + '% fill</span>');
+  }
+
+  // Value handed over from the PE converter (sessionStorage), or ?main=0.165 on the real site.
+  var h = AT.handoffTake();
+  var qd = AT.parse(AT.query('main'));
+  var dia = h && isFinite(AT.parse(h.dia)) ? AT.parse(h.dia) : (isFinite(qd) ? qd : NaN);
+  if (dia > 0 && dia <= 3) {
+    $('mainDia').value = String(dia);
+    $('newDia').value = String(dia);
+    $('handoffText').innerHTML = 'Main line set to <strong>' + dia + ' mm</strong>' + (h && h.label ? ' (' + h.label + ')' : '') + ' from the converter.';
+    $('handoffNote').hidden = false;
+  }
+
+  ['ratedDia', 'ratedLen', 'mainDia', 'mainLen', 'backDia', 'fill1', 'newDia', 'fill2'].forEach(function (id) {
+    $(id).addEventListener('input', calc);
+  });
+  calc();
+})();
+</script>
+</body>
+</html>
